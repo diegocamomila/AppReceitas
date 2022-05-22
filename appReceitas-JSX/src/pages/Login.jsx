@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import GlobalContext from '../context/GlobalContext';
 
-function Login({ history }) {
-    const [loginEmail, setLoginEmail] = useState('');
-    const [loginPassword, setLoginPassword] = useState('');
+function Login() {
+    let navigate = useNavigate();
+    let location = useLocation();
+
+    const {
+        loginEmail,
+        setLoginEmail,
+        loginPassword,
+        setLoginPassword,
+    } = useContext(GlobalContext)
 
     const validateInputs = () => {
         const PASSWORD_LENGTH = 7;
         const regexEmail = /\w+@+\w+\.com/ig;
         const validateEmail = regexEmail.test(loginEmail);
         const checkPassword = loginPassword.length >= PASSWORD_LENGTH;
-            return !(validateEmail && checkPassword);
+            return !(validateEmail && checkPassword); // a resposta positiva dos dois retorna true fazendo o botao ficar acessivel
     };
 
     const submitBTM = () => {
@@ -17,7 +26,8 @@ function Login({ history }) {
             localStorage.setItem('mealsToken', 1);
             localStorage.setItem('cocktailsToken', 1);
             localStorage.setItem('user', JSON.stringify(email));
-            history.push('/foods');
+            // <Foods />
+            navigate("/foods" + location.search);
    };
 
     return (
@@ -59,3 +69,4 @@ function Login({ history }) {
 }
 
 export default Login;
+

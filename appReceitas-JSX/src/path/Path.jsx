@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Foods from '../pages/Foods';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
 
@@ -16,7 +17,7 @@ function Path() {
             {/* <Route  path="/explore/foods" element={ ExploreFoods } /> */}
             {/* <Route  path="/explore" element={ Explore } /> */}
             {/* <Route  path="/drinks" element={ Drinks } /> */}
-            {/* <Route  path="/foods" element={ Foods } /> */}
+            <Route  path="/foods" element={< Foods /> } />
             <Route path="/" element={ <Login /> } />
             <Route  path="*" element={ <NotFound /> } />
         </Routes>

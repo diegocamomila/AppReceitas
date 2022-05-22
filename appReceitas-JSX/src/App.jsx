@@ -1,12 +1,11 @@
-import { BrowserRouter } from "react-router-dom";
+import GlobalProvider from "./context/GlobalProvider";
 import Path from "./path/Path";
-
 
 function App() {
     return (
-        <BrowserRouter>
-            <Path />
-        </BrowserRouter>
+        <GlobalProvider>
+                <Path />
+        </GlobalProvider>
     );
 }
 
